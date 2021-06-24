@@ -1,0 +1,43 @@
+@layout('layouts/defaut')
+@section('content')
+
+<div class="sufee-login d-flex align-content-center flex-wrap">
+        <div class="container">
+            <div class="login-content">
+                <div class="login-logo">
+                    <a href="index.html">
+                        <img class="align-content" src="{{ assetsUrl('images/pyramid.png') }}" alt="" height="200">
+                    </a>
+                </div>
+                <div class="login-form">
+                      <form method="POST" action="{{route('register.store')}}">
+            {{ csrfField() }}
+              <div class="form-group">
+                <label for="name">Fullname</label>
+                <input type="text" class="form-control" id="name" name="name"  value="{{old('name','')}}" placeholder="Enter Fullname">
+                {{ elIf('<span class=text-danger>$self</span>', getErrorFor('name'), hasErrorFor('name')) }}
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email"  name="email" value="{{old('email','')}}" placeholder="Enter email">
+                {{ elIf('<span class=text-danger>$self</span>', getErrorFor('email'), hasErrorFor('email')) }}
+              </div>
+              <div class="form-group">
+                <label for="pasword">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                {{ elIf('<span class=text-danger>$self</span>', getErrorFor('password'), hasErrorFor('password')) }}
+              </div>
+          
+                        <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
+                      
+                        <div class="register-link m-t-15 text-center">
+                            <p>Already have account ? <a href="{{route('/')}}"> Sign in</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+@endsection

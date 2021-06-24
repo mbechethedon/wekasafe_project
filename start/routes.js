@@ -17,3 +17,4 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+Route.post('/login-store','AuthController.postLogin').as('login.store')

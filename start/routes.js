@@ -23,6 +23,6 @@ Route.post('/register-store','AuthController.postRegister').as('register.store')
 
 Route.group(() => {
     Route.get('/dashboard','AuthController.renderDashboard').as('dashboard')
-     Route.post('/logout','AuthController.logout').as('logout')
+    Route.post('/logout','AuthController.logout').as('logout')
    
 }).middleware(['auth'])

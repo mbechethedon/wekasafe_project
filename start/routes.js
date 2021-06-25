@@ -24,5 +24,8 @@ Route.post('/register-store','AuthController.postRegister').as('register.store')
 Route.group(() => {
     Route.get('/dashboard','AuthController.renderDashboard').as('dashboard')
     Route.post('/logout','AuthController.logout').as('logout')
+    Route.get('/location','LocationController.index').as('locations.index')
+    Route.get('/create-location','LocationController.create').as('create-location')
+    Route.post('/store-location','LocationController.store').as('store-location')
    
 }).middleware(['auth'])

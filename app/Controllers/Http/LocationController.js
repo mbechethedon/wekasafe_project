@@ -19,7 +19,9 @@ class LocationController {
    */
   async index ({ request, response, view }) {
 
-    return view.render('locations/index')
+    return view.render('locations.index', {
+      title:'Location'
+    })
   }
 
   /**
@@ -32,6 +34,9 @@ class LocationController {
    * @param {View} ctx.view
    */
   async create ({ request, response, view }) {
+    return view.render('locations.create', {
+      title:'Create Form'
+    })
   }
 
   /**
@@ -42,7 +47,12 @@ class LocationController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request, response,session }) {
+     const location = await Location.create({
+      location: request.input('location')
+    })
+    session.flash({ 'successmessage': 'Location has been created'})
+    return response.redirect('location')
   }
 
   /**

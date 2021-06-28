@@ -26,6 +26,8 @@ Route.group(() => {
     Route.post('/logout','AuthController.logout').as('logout')
     Route.get('/location','LocationController.index').as('locations.index')
     Route.get('/create-location','LocationController.create').as('create-location')
-    Route.post('/store-location','LocationController.store').as('store-location')
+    Route.get('/view-location/:id', 'LocationController.show').as('view-location')
+    Route.post('/store-location','LocationController.store').as('store-location').validator('Location')
+    Route.post('update-location/:id', 'LocationController.update').as('update-location')
    
 }).middleware(['auth'])

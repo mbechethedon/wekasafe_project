@@ -65,6 +65,10 @@ class LocationController {
    * @param {View} ctx.view
    */
   async show ({ params, request, response, view }) {
+      const location = await Location.find(params.id)
+    return view.render('locations.edit', {
+      location: location.toJSON()
+    })
   }
 
   /**
@@ -87,7 +91,12 @@ class LocationController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update ({ params, request, response,session }) {
+    const location = await Location.find(params.id)
+    location.location = request.input('location')
+    await location.save()
+     session.flash({'successmessage': 'Location has been updated'})
+     return response.redirect('/location')
   }
 
   /**

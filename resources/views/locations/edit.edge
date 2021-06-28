@@ -1,0 +1,55 @@
+@layout('layouts/home')
+
+@section('content')
+@include('partials/breadcrumbs')
+
+ <div class="content">
+            <div class="animated fadeIn">
+
+
+                <div class="row">
+                     <div class="col-lg-3 ">
+                     </div>
+                      
+                    <div class="col-lg-6 ">
+                        <div class="card">
+                            <div class="card-header">
+                               
+                            </div>
+                            <div class="card-body">
+                                <!-- Credit Card -->
+                                <div id="pay-invoice">
+                                    <div class="card-body">
+                                        <div class="card-title">
+                                            <strong class="card-title">Update the form below</strong>
+                                        </div>
+                                        <hr>
+                                         <form method="POST" action="/update-location/{{location.id}}">
+                                      
+                                            {{ csrfField() }}
+                                            <div class="form-group">
+                                                <label for="cc-payment" class="control-label mb-1">Location</label>
+                                                <input  name="location" id="location"  type="text" value="{{location.location}}" class="form-control" aria-required="true" aria-invalid="false" required>
+                                            </div>
+                                           
+                                           
+                                            <div>
+                                                <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">
+                                                    <i class="fa fa-lock fa-lg"></i>&nbsp;
+                                                    <span id="payment-button-amount">Save</span>
+                                                  
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div> <!-- .card -->
+
+                    </div><!--/.col-->
+                </div>
+            </div>
+ </div>
+
+@endsection

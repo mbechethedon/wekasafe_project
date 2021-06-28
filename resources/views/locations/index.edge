@@ -20,7 +20,7 @@
 
                                   <div class="sufee-alert alert with-close alert-success alert-dismissible fade show">
                                         <span class="badge badge-pill badge-success">Success</span>
-                                        You successfully read this important alert.
+                                        {{ flashMessage('successmessage') }}
                                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
@@ -40,8 +40,8 @@
                                     <tbody>
                                          @each(location in locations)
                                         <tr>
-                                            <td>{{location.id}}</td>
-                                            <td>{{location.location}}</td>
+                                            <td> <a href="/view-location/{{location.id}}" class="btn btn-link">{{$loop.index+1}}</a></td>
+                                            <td> <a href="/view-location/{{location.id}}" class="btn btn-link">{{location.location}}</a></td>
                                            
                                         </tr>
                                         @endeach

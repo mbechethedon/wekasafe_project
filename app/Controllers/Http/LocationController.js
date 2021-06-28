@@ -18,9 +18,9 @@ class LocationController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-
+     const location = await Location.all()
     return view.render('locations.index', {
-      title:'Location'
+      title:'Location',locations:location.toJSON()
     })
   }
 
